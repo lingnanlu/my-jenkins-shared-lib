@@ -6,6 +6,7 @@ def call(String yamlName) {
 
     // 如果build存在
     if (yaml.build) {
+        println(yaml.build)
         def buildConf = yaml.build
         build(buildConf.workDir, buildConf.cmd)
     }
