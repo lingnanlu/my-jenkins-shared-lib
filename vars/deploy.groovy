@@ -25,7 +25,7 @@ def call(String distDir, List<String> files, List<String> run, String server) {
     sshPublisher(
             publishers: [
                     sshPublisherDesc(
-                            configName: "${SERVER}",
+                            configName: "${server}",
                             transfers: [
                                     sshTransfer(cleanRemote: false, sourceFiles: 'target/*.jar', removePrefix: 'target', remoteDirectory: "${PROJECT_PATH}"),
                                     sshTransfer(cleanRemote: false, sourceFiles: 'deploy/*', remoteDirectory: "${PROJECT_PATH}")
