@@ -12,7 +12,7 @@ def call(String yamlName) {
 
     if (yaml.deploy) {
         def deployConf = yaml.deploy
-        deploy(deployConf.distDir, deployConf.files, deployConf.run)
+        deploy(deployConf.distDir, deployConf.files, deployConf.run, params.SERVER)
     }
 
     clean()

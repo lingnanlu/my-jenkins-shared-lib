@@ -1,3 +1,5 @@
 def call() {
-    echo "clean begin"
+    println "${'-' * 20}deploy begin${'-' * 20}"
+
+    deleteDir()
 }
