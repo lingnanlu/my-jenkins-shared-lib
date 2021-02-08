@@ -7,12 +7,14 @@ def call(String distDir, List<String> files, List<String> run, String server) {
     println(run)
     println(server)
 
-    def transferClourse = new ArrayList()
 
-    for (int i = 0; i < files.size(); i++) {
-        transferClourse.add(sshTransfer(cleanRemote: false, sourceFiles: files[i], remoteDirectory: distDir))
-    }
-//
+
+
+    def transferClourse = [
+            sshTransfer(cleanRemote: false, sourceFiles: files[0], remoteDirectory: distDir),
+            sshTransfer(cleanRemote: false, sourceFiles: files[1], remoteDirectory: distDir)
+    ]
+
     sshPublisher(
             publishers: [
                     sshPublisherDesc(
