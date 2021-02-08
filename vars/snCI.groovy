@@ -1,8 +1,8 @@
 def call(String yamlName) {
 
-    def yaml = readYaml file: yamlName;
+    log(params, env)
 
-    log(params)
+    def yaml = readYaml file: yamlName;
 
     // 如果build存在
     if (yaml.build) {

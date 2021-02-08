@@ -1,5 +1,9 @@
 def call(def workDir, def cmd) {
-    println(workDir)
-    println(cmd[0])
-    sh cmd[0]
+    println "build begin"
+    println "workdir is ${workDir}"
+    println "cmd is ${cmd}"
+
+    for (i in 0..<cmd.length) {
+        sh cmd[i]
+    }
 }

@@ -1,4 +1,6 @@
 def call(def params) {
-    echo "hello world"
-    echo "branch is ${params.BRANCH}"
+    println "pipeline begin"
+    println "branch is ${params.BRANCH}"
+    println "env is ${params.ENV}"
+    println "server is ${params.SERVER}"
 }
