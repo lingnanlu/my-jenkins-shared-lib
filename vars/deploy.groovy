@@ -10,16 +10,16 @@ def call(String distDir, List<String> files, List<String> run, String server) {
 
 
 
-    def transferClourse = [
-            sshTransfer(cleanRemote: false, sourceFiles: files[0], remoteDirectory: distDir),
-            sshTransfer(cleanRemote: false, sourceFiles: files[1], remoteDirectory: distDir)
-    ]
+//    def transferClourse =
 
     sshPublisher(
             publishers: [
                     sshPublisherDesc(
                             configName: "${server}",
-                            transfers: transferClourse
+                            transfers: [
+                                    sshTransfer(cleanRemote: false, sourceFiles: files[0], remoteDirectory: distDir),
+                                    sshTransfer(cleanRemote: false, sourceFiles: files[1], remoteDirectory: distDir)
+                            ]
                     )
             ]
     )
