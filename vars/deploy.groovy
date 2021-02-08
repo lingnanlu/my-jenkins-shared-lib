@@ -29,7 +29,7 @@ def call(String distDir, List<String> files, List<String> run, String server) {
                     sshPublisherDesc(
                             configName: "${server}",
                             transfers: [
-                                    sshTransfer(cleanRemote: false, sourceFiles: 'target/*.jar', removePrefix: 'target', remoteDirectory: distDir),
+                                    sshTransfer(cleanRemote: false, sourceFiles: "${files[0]}", removePrefix: 'target', remoteDirectory: distDir),
                                     sshTransfer(cleanRemote: false, sourceFiles: 'deploy/*', remoteDirectory: distDir)
                             ]
                     )
