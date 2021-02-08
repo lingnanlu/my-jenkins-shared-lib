@@ -24,6 +24,7 @@ def call(String distDir, List<String> files, List<String> run, String server) {
 //            ]
 //    )
 
+    def file = "deploy/*"
     println "files[1] == ${files[1]}"
     sshPublisher(
             publishers: [
@@ -31,7 +32,7 @@ def call(String distDir, List<String> files, List<String> run, String server) {
                             configName: "${server}",
                             transfers: [
                                     sshTransfer(cleanRemote: false, sourceFiles: 'target/*.jar', removePrefix: 'target', remoteDirectory: distDir),
-                                    sshTransfer(cleanRemote: false, sourceFiles: "${files[1]}", remoteDirectory: distDir)
+                                    sshTransfer(cleanRemote: false, sourceFiles: file, remoteDirectory: distDir)
                             ]
                     )
             ]
