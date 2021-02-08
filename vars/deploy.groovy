@@ -7,30 +7,30 @@ def call(String distDir, List<String> files, List<String> run, String server) {
     println(run)
     println(server)
 
-//    def transfer = new ArrayList()
-//
-//    for (int i = 0; i < files.size(); i++) {
-//        transfer.add(sshTransfer(cleanRemote: false, sourceFiles: files[i], remoteDirectory: distDir))
-//    }
-//
-//    sshPublisher(
-//            publishers: [
-//                    sshPublisherDesc(
-//                            configName: "${server}",
-//                            transfers: transfer
-//                    )
-//            ]
-//    )
+    def transferClourse = new ArrayList()
 
+    for (int i = 0; i < files.size(); i++) {
+        transferClourse.add(sshTransfer(cleanRemote: false, sourceFiles: files[i], remoteDirectory: distDir))
+    }
+//
     sshPublisher(
             publishers: [
                     sshPublisherDesc(
                             configName: "${server}",
-                            transfers: [
-                                    sshTransfer(cleanRemote: false, sourceFiles: 'target/*.jar', removePrefix: 'target', remoteDirectory: distDir),
-                                    sshTransfer(cleanRemote: false, sourceFiles: 'deploy/*', remoteDirectory: distDir)
-                            ]
+                            transfers: transferClourse
                     )
             ]
     )
+
+//    sshPublisher(
+//            publishers: [
+//                    sshPublisherDesc(
+//                            configName: "${server}",
+//                            transfers: [
+//                                    sshTransfer(cleanRemote: false, sourceFiles: 'target/*.jar', removePrefix: 'target', remoteDirectory: distDir),
+//                                    sshTransfer(cleanRemote: false, sourceFiles: 'deploy/*', remoteDirectory: distDir)
+//                            ]
+//                    )
+//            ]
+//    )
 }
