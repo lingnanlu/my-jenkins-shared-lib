@@ -24,7 +24,7 @@ def call(String distDir, List<String> files, List<String> run, String server) {
 //            ]
 //    )
 
-    def file = "deploy/*"
+    def file = "./deploy/*"
     println "files[1] == ${files[1]}"
     sshPublisher(
             publishers: [
