@@ -1,10 +1,10 @@
 
-def call(String distDir, List<String> files, List<String> run, String server) {
+def call(String distDir, List<String> files, List<String> cmds, String server) {
     println "${'-' * 20}deploy begin${'-' * 20}"
 
     println(distDir)
     println(files)
-    println(run)
+    println(cmds)
     println(server)
 
     def transfer = new ArrayList()
@@ -18,6 +18,21 @@ def call(String distDir, List<String> files, List<String> run, String server) {
                     sshPublisherDesc(
                             configName: "${server}",
                             transfers: transfer
+                    )
+            ]
+    )
+
+    def execCmd = new ArrayList()
+
+    for (String cmd : cmds) {
+        execCmd.add(sshTransfer(execCommand: "cd ${distDir} && ${cmd}"))
+    }
+
+    sshPublisher(
+            publishers: [
+                    sshPublisherDesc(
+                            configName: "${server}",
+                            transfers: execCmd
                     )
             ]
     )
