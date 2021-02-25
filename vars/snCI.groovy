@@ -15,7 +15,7 @@ def call(String yamlName) {
             deploy(deployConf.distDir, deployConf.files, deployConf.run, params.SERVER)
         }
     } finally {
-        clean()
+//        clean()
     }
 
 }
