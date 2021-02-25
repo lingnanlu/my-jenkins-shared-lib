@@ -5,7 +5,6 @@ def call(String yamlName) {
 
         def yaml = readYaml file: yamlName;
 
-        // 如果build存在
         if (yaml.build) {
             def buildConf = yaml.build
             build(buildConf.workDir, buildConf.cmd)
